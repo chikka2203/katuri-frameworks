@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Data Obesity Doctrine · Burger with Swivel™ Model | Katuri Frameworks</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Geist+Mono:wght@300..700&family=Geist:wght@300..700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #14253A;
+    --ink-deep: #0A1626;
+    --bone: #F4ECDC;
+    --bone-deep: #E9DEC8;
+    --mustard: #E5B644;
+    --mustard-deep: #B58A2F;
+    --green: #4FA85B;
+    --green-deep: #2E7A3A;
+    --orange: #E89548;
+    --orange-deep: #B66A24;
+    --brown: #6F4B33;
+    --brown-deep: #4A2F1F;
+    --rust: #A14A2A;
+    --rule: rgba(20, 37, 58, 0.16);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    background: var(--bone);
+    color: var(--ink);
+    font-family: 'Geist', sans-serif;
+    font-weight: 400;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .grain::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 100;
+    opacity: 0.045;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/></filter><rect width='200' height='200' filter='url(%23n)'/></svg>");
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 48px;
+  }
+
+  /* ---------- TOP STRIP ---------- */
+  .strip {
+    background: var(--ink);
+    color: var(--bone);
+    padding: 14px 0;
+    font-family: 'Geist Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+  .strip .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .strip .mustard { color: var(--mustard); }
+
+  /* ---------- HERO ---------- */
+  .hero {
+    padding: 80px 0 64px;
+    border-bottom: 1px solid var(--rule);
+  }
+  .eyebrow {
+    font-family: 'Geist Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--rust);
+    margin-bottom: 28px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .eyebrow::before {
+    content: "";
+    width: 36px;
+    height: 1px;
+    background: var(--rust);
+  }
+  .declaration {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-variation-settings: "opsz" 144, "SOFT" 0;
+    font-size: clamp(56px, 9vw, 124px);
+    line-height: 0.92;
+    letter-spacing: -0.035em;
+    color: var(--ink);
+    margin-bottom: 32px;
+  }
+  .declaration em {
+    font-style: italic;
+    font-variation-settings: "opsz" 144, "SOFT" 100;
+    color: var(--rust);
+  }
+  .declaration .strike { position: relative; display: inline-block; }
+  .declaration .strike::after {
+    content: "";
+    position: absolute;
+    left: -4px; right: -4px; top: 52%;
+    height: 8px;
+    background: var(--mustard);
+    transform: rotate(-1deg);
+    z-index: -1;
+  }
+  .subdeck {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-size: clamp(20px, 2.2vw, 28px);
+    line-height: 1.35;
+    max-width: 820px;
+    opacity: 0.85;
+  }
+  .subdeck b { font-weight: 500; color: var(--rust); }
+
+  /* ---------- THESIS ---------- */
+  .thesis {
+    background: var(--ink);
+    color: var(--bone);
+    padding: 56px 0;
+  }
+  .thesis-grid {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 60px;
+    align-items: start;
+  }
+  .thesis-label {
+    font-family: 'Geist Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--mustard);
+    border-top: 1px solid var(--mustard);
+    padding-top: 14px;
+  }
+  .thesis-body {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-size: clamp(22px, 2.5vw, 34px);
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+  }
+  .thesis-body em {
+    font-style: italic;
+    color: var(--mustard);
+    font-weight: 400;
+  }
+
+  /* ---------- SECTION SHELL ---------- */
+  section.block {
+    padding: 96px 0;
+    border-bottom: 1px solid var(--rule);
+  }
+  .section-head {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 60px;
+    margin-bottom: 56px;
+    align-items: end;
+  }
+  .section-number {
+    font-family: 'Geist Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--rust);
+  }
+  .section-title {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: clamp(40px, 5.5vw, 72px);
+    line-height: 0.95;
+    letter-spacing: -0.03em;
+  }
+  .section-title em {
+    font-style: italic;
+    color: var(--rust);
+  }
+
+  /* ---------- THE STACK ---------- */
+  .stack-wrap {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 70px;
+    align-items: center;
+  }
+  .stack-svg { width: 100%; height: auto; display: block; }
+
+  .stack-key h3 {
+    font-family: 'Geist Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--rust);
+    margin-bottom: 16px;
+  }
+  .stack-key p {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-size: 21px;
+    line-height: 1.4;
+    color: var(--ink);
+    margin-bottom: 22px;
+  }
+  .stack-key p em { font-style: italic; color: var(--rust); font-weight: 400; }
+
+  .layer-legend {
+    margin-top: 28px;
+    border-top: 1px solid var(--rule);
+    padding-top: 22px;
+  }
+  .layer-legend-row {
+    display: grid;
+    grid-template-columns: 16px 110px 1fr;
+    gap: 14px;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px dashed var(--rule);
+  }
+  .layer-legend-row:last-child { border-bottom: none; }
+  .swatch {
+    width: 16px; height: 16px; border-radius: 50%;
+    border: 1px solid var(--ink);
+  }
+  .layer-legend-row .name {
+    font-family: 'Geist Mono', monospace;
+    font-size: 10.5px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink);
+  }
+  .layer-legend-row .what {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 15px;
+    color: var(--ink);
+    opacity: 0.78;
+  }
+
+  /* ---------- DIAGNOSIS ---------- */
+  .symptom-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    border-top: 1px solid var(--ink);
+    border-left: 1px solid var(--ink);
+  }
+  .symptom {
+    border-right: 1px solid var(--ink);
+    border-bottom: 1px solid var(--ink);
+    padding: 28px 22px 32px;
+    background: var(--bone);
+    min-height: 220px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .symptom-num {
+    font-family: 'Geist Mono', monospace;
+    font-size: 11px;
+    color: var(--rust);
+    letter-spacing: 0.1em;
+  }
+  .symptom-name {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 22px;
+    line-height: 1.05;
+    letter-spacing: -0.015em;
+    margin-top: 60px;
+  }
+  .symptom-desc {
+    font-size: 13px;
+    opacity: 0.75;
+    line-height: 1.45;
+    margin-top: 10px;
+  }
+  .symptom:nth-child(odd) { background: var(--bone-deep); }
+
+  /* ---------- LIABILITY MATH ---------- */
+  .math-block {
+    background: var(--ink-deep);
+    color: var(--bone);
+    padding: 80px 0;
+  }
+  .math-label {
+    font-family: 'Geist Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--mustard);
+    text-align: center;
+    margin-bottom: 36px;
+  }
+  .equation {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-size: clamp(28px, 4.5vw, 60px);
+    line-height: 1.2;
+    text-align: center;
+    letter-spacing: -0.02em;
+  }
+  .equation .var {
+    color: var(--mustard);
+    font-style: italic;
+    font-weight: 400;
+  }
+  .equation .op {
+    color: var(--orange);
+    margin: 0 0.3em;
+    font-weight: 300;
+  }
+  .math-foot {
+    text-align: center;
+    margin-top: 40px;
+    font-size: 14px;
+    opacity: 0.6;
+    letter-spacing: 0.04em;
+    max-width: 720px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* ---------- DOCTRINE BY LAYER ---------- */
+  .doctrine {
+    margin-top: 8px;
+    border-top: 2px solid var(--ink);
+  }
+  .layer-row {
+    display: grid;
+    grid-template-columns: 140px 1fr 1.4fr 1fr;
+    gap: 0;
+    border-bottom: 1px solid var(--ink);
+    min-height: 140px;
+    align-items: stretch;
+    background: var(--bone);
+  }
+  .layer-row > div {
+    padding: 28px 26px;
+    border-right: 1px solid var(--rule);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .layer-row > div:last-child { border-right: none; }
+
+  .layer-tag {
+    font-family: 'Geist Mono', monospace;
+    font-size: 10.5px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink);
+    opacity: 0.65;
+  }
+  .layer-tag .stripe {
+    display: inline-block;
+    width: 28px; height: 4px;
+    margin-bottom: 14px;
+  }
+  .layer-tag .big {
+    display: block;
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 52px;
+    line-height: 1;
+    margin-top: 10px;
+    letter-spacing: -0.03em;
+    color: var(--ink);
+  }
+
+  .layer-name {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 26px;
+    letter-spacing: -0.02em;
+    line-height: 1.05;
+  }
+  .layer-name small {
+    display: block;
+    font-family: 'Geist Mono', monospace;
+    font-size: 10.5px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink);
+    opacity: 0.55;
+    margin-top: 10px;
+    font-weight: 400;
+  }
+  .layer-action {
+    font-size: 14.5px;
+    line-height: 1.6;
+    color: var(--ink);
+  }
+  .layer-slogan {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 1.3;
+  }
+
+  /* Per-layer accent colors */
+  .layer-row.core .layer-tag .stripe { background: var(--mustard); }
+  .layer-row.core .layer-name, .layer-row.core .layer-slogan { color: var(--mustard-deep); }
+
+  .layer-row.gov .layer-tag .stripe { background: var(--green); }
+  .layer-row.gov .layer-name, .layer-row.gov .layer-slogan { color: var(--green-deep); }
+
+  .layer-row.ctrl .layer-tag .stripe { background: var(--orange); }
+  .layer-row.ctrl .layer-name, .layer-row.ctrl .layer-slogan { color: var(--orange-deep); }
+
+  .layer-row.biz .layer-tag .stripe { background: var(--brown); }
+  .layer-row.biz .layer-name, .layer-row.biz .layer-slogan { color: var(--brown-deep); }
+
+  .layer-row.out .layer-tag .stripe { background: var(--mustard); }
+  .layer-row.out .layer-name, .layer-row.out .layer-slogan { color: var(--mustard-deep); }
+  .layer-row.out { background: var(--bone-deep); }
+
+  /* ---------- OUTCOME ---------- */
+  .outcome {
+    background: var(--mustard);
+    padding: 96px 0;
+    color: var(--ink);
+  }
+  .outcome .eyebrow { color: var(--brown-deep); }
+  .outcome .eyebrow::before { background: var(--brown-deep); }
+  .outcome-headline {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: clamp(48px, 7vw, 96px);
+    line-height: 0.92;
+    letter-spacing: -0.035em;
+    margin-bottom: 40px;
+    max-width: 1000px;
+  }
+  .outcome-headline em {
+    font-style: italic;
+    color: var(--brown-deep);
+  }
+  .outcome-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    margin-top: 60px;
+    border-top: 2px solid var(--ink);
+    padding-top: 36px;
+  }
+  .outcome-stat .k {
+    font-family: 'Geist Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    color: var(--brown-deep);
+  }
+  .outcome-stat .v {
+    font-family: 'Fraunces', serif;
+    font-size: 30px;
+    font-weight: 500;
+    letter-spacing: -0.025em;
+    line-height: 1.15;
+  }
+
+  /* ---------- FOOTER ---------- */
+  footer {
+    background: var(--ink);
+    color: var(--bone);
+    padding: 60px 0 50px;
+  }
+  .foot-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 40px;
+    align-items: end;
+  }
+  .foot-mark {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 36px;
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+  .foot-mark span { color: var(--mustard); }
+  .foot-meta {
+    font-family: 'Geist Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    opacity: 0.7;
+    line-height: 1.8;
+  }
+  .foot-meta b { color: var(--mustard); font-weight: 400; }
+  .foot-pat {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 14px;
+    color: var(--mustard);
+    margin-top: 10px;
+    letter-spacing: 0.02em;
+    opacity: 0.85;
+  }
+
+  @media (max-width: 960px) {
+    .container { padding: 0 24px; }
+    .symptom-grid { grid-template-columns: repeat(2, 1fr); }
+    .section-head, .thesis-grid, .stack-wrap, .outcome-grid, .foot-grid { grid-template-columns: 1fr; gap: 24px; }
+    .layer-row { grid-template-columns: 1fr; min-height: auto; }
+    .layer-row > div { border-right: none; border-bottom: 1px solid var(--rule); }
+  }
+</style>
+</head>
+<body class="grain">
+
+<div class="strip">
+  <div class="container">
+    <span>Katuri Frameworks · <span class="mustard">Vol. 06</span></span>
+    <span>The Data Obesity Doctrine · Burger with Swivel™ Model</span>
+    <span>Patent Pending · 2026</span>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="eyebrow">An Application of the Burger with Swivel™ Model</div>
+    <h1 class="declaration">
+      Your data hoard<br>
+      is <span class="strike">not</span> an asset.<br>
+      It is a <em>liability</em><br>
+      accruing interest.
+    </h1>
+    <p class="subdeck">
+      Every untriaged terabyte is <b>breach surface, regulatory exposure, discovery cost, and storage debt</b> — compounding daily. The discipline is no longer to collect more. It is to <b>hold only what regulation requires, and what the business can monetize</b>. Everything else must be defensibly destroyed.
+    </p>
+  </div>
+</section>
+
+<!-- THESIS -->
+<section class="thesis">
+  <div class="container">
+    <div class="thesis-grid">
+      <div class="thesis-label">The Thesis</div>
+      <div class="thesis-body">
+        Data is the focus at the top of the Burger. It enters the stack, flows through Governance, Controls, and Analytics & AI, and exits as Outcomes. <em>Obesity at the focus point distorts every layer below it.</em> Fix the entry. The stack performs.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- THE ANATOMY -->
+<section class="block">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-number">01 · The Anatomy</div>
+      <h2 class="section-title">The Burger. <em>With Swivel.</em></h2>
+    </div>
+
+    <div class="stack-wrap">
+      <!-- Faithful canonical burger rendering -->
+      <svg class="stack-svg" viewBox="0 0 420 640" xmlns="http://www.w3.org/2000/svg" aria-label="Burger with Swivel diagram — Data at top, Outcomes at bottom, vertical swivel axis">
+        <!-- Swivel axis: extends above and below burger -->
+        <line x1="210" y1="20" x2="210" y2="620" stroke="#14253A" stroke-width="2" stroke-linecap="round"/>
+        <line x1="210" y1="20" x2="210" y2="620" stroke="#14253A" stroke-width="0.6" stroke-dasharray="3 5" opacity="0.5"/>
+
+        <!-- DATA (focus) label at top -->
+        <text x="240" y="62" font-family="Geist Mono" font-size="11" fill="#14253A" letter-spacing="2.5">DATA (focus)</text>
+        <path d="M 252 70 L 252 96 L 246 90 M 252 96 L 258 90" fill="none" stroke="#14253A" stroke-width="1.2" stroke-linecap="round"/>
+
+        <!-- TOP BUN · Data Real Estate (Core) -->
+        <ellipse cx="210" cy="125" rx="170" ry="55" fill="#E5B644" stroke="#14253A" stroke-width="2"/>
+        <!-- bun highlight -->
+        <ellipse cx="180" cy="105" rx="60" ry="14" fill="#F2CE6B" opacity="0.55"/>
+        <!-- seed dots -->
+        <circle cx="160" cy="118" r="3" fill="#B58A2F" opacity="0.7"/>
+        <circle cx="230" cy="112" r="3" fill="#B58A2F" opacity="0.7"/>
+        <circle cx="260" cy="128" r="3" fill="#B58A2F" opacity="0.7"/>
+        <circle cx="135" cy="130" r="3" fill="#B58A2F" opacity="0.7"/>
+        <text x="210" y="140" font-family="Fraunces" font-style="italic" font-size="22" fill="#14253A" text-anchor="middle" font-weight="500">Data Real Estate</text>
+        <text x="210" y="160" font-family="Geist Mono" font-size="9" fill="#14253A" text-anchor="middle" letter-spacing="2" opacity="0.7">CORE · KYD + KYP</text>
+
+        <!-- GOVERNANCE -->
+        <rect x="60" y="200" width="300" height="48" rx="24" ry="24" fill="#4FA85B" stroke="#14253A" stroke-width="2"/>
+        <text x="210" y="225" font-family="Fraunces" font-style="italic" font-size="20" fill="#F4ECDC" text-anchor="middle" font-weight="500">Governance</text>
+        <text x="210" y="241" font-family="Geist Mono" font-size="8.5" fill="#F4ECDC" text-anchor="middle" letter-spacing="1.8" opacity="0.85">REGULATION · RETENTION · CONSENT · LINEAGE</text>
+
+        <!-- CONTROLS -->
+        <rect x="55" y="268" width="310" height="48" rx="24" ry="24" fill="#E89548" stroke="#14253A" stroke-width="2"/>
+        <text x="210" y="293" font-family="Fraunces" font-style="italic" font-size="20" fill="#14253A" text-anchor="middle" font-weight="500">Controls &amp; Protections</text>
+        <text x="210" y="309" font-family="Geist Mono" font-size="8.5" fill="#14253A" text-anchor="middle" letter-spacing="1.8" opacity="0.85">ENCRYPTION · IAM · DLP · BACKUP</text>
+
+        <!-- ANALYTICS & AI -->
+        <rect x="50" y="336" width="320" height="48" rx="24" ry="24" fill="#6F4B33" stroke="#14253A" stroke-width="2"/>
+        <text x="210" y="361" font-family="Fraunces" font-style="italic" font-size="20" fill="#F4ECDC" text-anchor="middle" font-weight="500">Analytics &amp; AI</text>
+        <text x="210" y="377" font-family="Geist Mono" font-size="8.5" fill="#F4ECDC" text-anchor="middle" letter-spacing="1.8" opacity="0.85">BI · INSIGHTS · MODELS — ON GOVERNED DATA</text>
+
+        <!-- BOTTOM BUN · Outcomes -->
+        <ellipse cx="210" cy="460" rx="170" ry="55" fill="#E5B644" stroke="#14253A" stroke-width="2"/>
+        <!-- shadow side -->
+        <ellipse cx="240" cy="480" rx="60" ry="12" fill="#B58A2F" opacity="0.35"/>
+        <text x="210" y="455" font-family="Fraunces" font-style="italic" font-size="22" fill="#14253A" text-anchor="middle" font-weight="500">Outcomes</text>
+        <text x="210" y="478" font-family="Geist Mono" font-size="9" fill="#14253A" text-anchor="middle" letter-spacing="2" opacity="0.75">RISK ↓ · COMPLIANCE ✓ · VELOCITY ↑</text>
+
+        <!-- Swivel pivot indicator at bottom -->
+        <circle cx="210" cy="540" r="6" fill="#14253A"/>
+        <circle cx="210" cy="540" r="14" fill="none" stroke="#14253A" stroke-width="1" stroke-dasharray="2 3" opacity="0.6"/>
+        <path d="M 190 560 Q 210 575 230 560" fill="none" stroke="#14253A" stroke-width="1.2" stroke-linecap="round" opacity="0.6"/>
+        <path d="M 230 560 L 225 555 M 230 560 L 226 566" fill="none" stroke="#14253A" stroke-width="1.2" stroke-linecap="round" opacity="0.6"/>
+        <text x="210" y="600" font-family="Geist Mono" font-size="10" fill="#14253A" text-anchor="middle" letter-spacing="2.5" opacity="0.7">SWIVEL AXIS</text>
+
+        <!-- Attribution -->
+        <text x="210" y="625" font-family="Fraunces" font-style="italic" font-size="10" fill="#14253A" text-anchor="middle" opacity="0.55">Burger with Swivel™ · Dr. Srikanth Katuri · Patent Pending</text>
+      </svg>
+
+      <div class="stack-key">
+        <h3>Reading the Burger</h3>
+        <p>Data is the <em>focus</em> at the top — what you actually hold. It flows through the stack and exits at the bottom as <em>Outcomes</em>. Every layer in between is a discipline the data must pass through to earn its keep.</p>
+        <p>The <em>Swivel</em> means the model rotates. It applies to any business unit, region, system, or data class — but the order of operations never changes. Core first. Outcomes last.</p>
+
+        <div class="layer-legend">
+          <div class="layer-legend-row">
+            <span class="swatch" style="background:#E5B644"></span>
+            <span class="name">Core · 00</span>
+            <span class="what">Data Real Estate — classify, rationalise</span>
+          </div>
+          <div class="layer-legend-row">
+            <span class="swatch" style="background:#4FA85B"></span>
+            <span class="name">First · 01</span>
+            <span class="what">Governance & Policy</span>
+          </div>
+          <div class="layer-legend-row">
+            <span class="swatch" style="background:#E89548"></span>
+            <span class="name">Second · 02</span>
+            <span class="what">Controls & Protections</span>
+          </div>
+          <div class="layer-legend-row">
+            <span class="swatch" style="background:#6F4B33"></span>
+            <span class="name">Third · 03</span>
+            <span class="what">Business Alignment — Analytics & AI</span>
+          </div>
+          <div class="layer-legend-row">
+            <span class="swatch" style="background:#E5B644"></span>
+            <span class="name">Top · 04</span>
+            <span class="what">Outcomes — the deliverable</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DIAGNOSIS -->
+<section class="block">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-number">02 · The Diagnosis</div>
+      <h2 class="section-title">Five Core defects. <em>One pathology.</em></h2>
+    </div>
+    <div class="symptom-grid">
+      <div class="symptom">
+        <div class="symptom-num">S/01</div>
+        <div>
+          <div class="symptom-name">Untriaged growth</div>
+          <div class="symptom-desc">Storage compounds 30–50% YoY with no classification gate at ingest.</div>
+        </div>
+      </div>
+      <div class="symptom">
+        <div class="symptom-num">S/02</div>
+        <div>
+          <div class="symptom-name">Dark data dominance</div>
+          <div class="symptom-desc">60–80% of the corpus is unknown, unowned, unsearched, untouched.</div>
+        </div>
+      </div>
+      <div class="symptom">
+        <div class="symptom-num">S/03</div>
+        <div>
+          <div class="symptom-name">Orphaned datasets</div>
+          <div class="symptom-desc">Departed teams, deprecated systems, legacy migrations — still live in production.</div>
+        </div>
+      </div>
+      <div class="symptom">
+        <div class="symptom-num">S/04</div>
+        <div>
+          <div class="symptom-name">Redundant copies</div>
+          <div class="symptom-desc">The same record exists in 5–11 stores. No canonical source of truth.</div>
+        </div>
+      </div>
+      <div class="symptom">
+        <div class="symptom-num">S/05</div>
+        <div>
+          <div class="symptom-name">Indefinite by default</div>
+          <div class="symptom-desc">"Keep forever" is the unwritten policy. Deletion has no owner.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LIABILITY MATH -->
+<section class="math-block">
+  <div class="container">
+    <div class="math-label">03 · The Liability Math</div>
+    <div class="equation">
+      <span class="var">Held Data</span>
+      <span class="op">=</span><br>
+      <span class="var">Breach Surface</span> <span class="op">×</span> <span class="var">Regulatory Exposure</span><br>
+      <span class="op">×</span> <span class="var">Discovery Cost</span> <span class="op">×</span> <span class="var">Storage TCO</span>
+    </div>
+    <p class="math-foot">
+      Every variable scales with volume. None of them scale with the value of the data held. The only term the CIO controls is the multiplicand on the left.
+    </p>
+  </div>
+</section>
+
+<!-- DOCTRINE BY LAYER -->
+<section class="block">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-number">04 · The Doctrine, By Layer</div>
+      <h2 class="section-title">Read the Burger <em>top down</em>.</h2>
+    </div>
+
+    <div class="doctrine">
+
+      <!-- CORE (top bun) -->
+      <div class="layer-row core">
+        <div class="layer-tag">
+          <span class="stripe"></span>
+          Core<span class="big">00</span>
+        </div>
+        <div class="layer-name">Data Real Estate<small>KYD + KYP</small></div>
+        <div class="layer-action">Survey the estate. Classify every parcel. Rationalise ruthlessly. Decide — by policy, not preference — what to keep and what to defensibly destroy. The Core is where obesity begins, and where it must end.</div>
+        <div class="layer-slogan">"You cannot defend<br>what you have not surveyed."</div>
+      </div>
+
+      <!-- GOVERNANCE -->
+      <div class="layer-row gov">
+        <div class="layer-tag">
+          <span class="stripe"></span>
+          First<br>Layer<span class="big">01</span>
+        </div>
+        <div class="layer-name">Governance &amp; Policy<small>Regulation · Retention · Consent · Lineage</small></div>
+        <div class="layer-action">Every dataset bound to a retention obligation — HIPAA, HITRUST, GDPR, SOX, DPDP, contract. No obligation, no right to hold. Lineage and consent are first-class metadata, not afterthoughts.</div>
+        <div class="layer-slogan">"Holding is permission,<br>not default."</div>
+      </div>
+
+      <!-- CONTROLS -->
+      <div class="layer-row ctrl">
+        <div class="layer-tag">
+          <span class="stripe"></span>
+          Second<br>Layer<span class="big">02</span>
+        </div>
+        <div class="layer-name">Controls &amp; Protections<small>Encryption · IAM · DLP · Backup</small></div>
+        <div class="layer-action">Protect the lean corpus, not the bloated one. Controls scale with risk class, not raw volume. Backups follow retention policy, not vendor defaults.</div>
+        <div class="layer-slogan">"Protect what<br>survives the cull."</div>
+      </div>
+
+      <!-- BUSINESS ALIGNMENT -->
+      <div class="layer-row biz">
+        <div class="layer-tag">
+          <span class="stripe"></span>
+          Third<br>Layer<span class="big">03</span>
+        </div>
+        <div class="layer-name">Business Alignment<small>BI · Analytics · AI</small></div>
+        <div class="layer-action">Value creation flows downstream of governance — never upstream. Ungoverned data is not a moat; it is exposure. Monetize only what is classified, retained on purpose, and consented.</div>
+        <div class="layer-slogan">"Monetize the governed.<br>Refuse the rest."</div>
+      </div>
+
+      <!-- OUTCOMES (bottom bun) -->
+      <div class="layer-row out">
+        <div class="layer-tag">
+          <span class="stripe"></span>
+          Top<br>Layer<span class="big">04</span>
+        </div>
+        <div class="layer-name">Outcomes<small>The Deliverable</small></div>
+        <div class="layer-action">Measurable shrinkage of the liability surface. Demonstrable analytics velocity. Clean audit trails. Board-grade evidence of disciplined stewardship.</div>
+        <div class="layer-slogan">"Lean by design.<br>Defensible by default."</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- OUTCOME -->
+<section class="outcome">
+  <div class="container">
+    <div class="eyebrow">05 · What the Bottom Bun Delivers</div>
+    <h2 class="outcome-headline">
+      A slim Core. A <em>defensible</em> posture.<br>
+      Monetization at velocity.
+    </h2>
+    <div class="outcome-grid">
+      <div class="outcome-stat">
+        <div class="k">Risk</div>
+        <div class="v">Breach surface<br>contracts with the corpus.</div>
+      </div>
+      <div class="outcome-stat">
+        <div class="k">Compliance</div>
+        <div class="v">Audit readiness<br>becomes the steady state.</div>
+      </div>
+      <div class="outcome-stat">
+        <div class="k">Velocity</div>
+        <div class="v">Lean data trains, queries,<br>and decides faster.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="foot-grid">
+      <div>
+        <div class="foot-mark"><span>Katuri</span> Frameworks<span style="color:var(--mustard)">.</span></div>
+        <div class="foot-pat">Burger with Swivel™ · Patent Pending</div>
+      </div>
+      <div class="foot-meta">
+        <b>Framework</b><br>
+        Burger with Swivel™ Model<br>
+        The Data Obesity Doctrine
+      </div>
+      <div class="foot-meta">
+        <b>Author</b><br>
+        Dr. Srikanth Katuri<br>
+        2026 · Vol. 06
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
